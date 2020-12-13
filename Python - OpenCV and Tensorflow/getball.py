@@ -1,16 +1,21 @@
 '''
+12/13/2020 12:26 AM
+No Raspberry Pi communication with roboRIO. We will implement SSH to execute Robot commands with Java. Possible resource: https://www.chiefdelphi.com/t/executing-files-by-sshing-into-the-roborio/148131/2.
+
+The ball detection works, albeit poorly. I think it is adequate for our use case though and it would be great if it could be tested to see if the ball detection works for the yellow FRC ball when it is put directly in front of the webcam. 
+
 What does this code do? 
 This code detects a ball in the game and instructs the robot to pick up the ball with the shooter mechanism.
 When a ball is detected with OpenCV, the robot picks up the ball by moving forward to pick up the ball with the shooter.
-
-How can we test this code?
-Please deploy the Java code with FRC Driver Station. 
-Then, turn on the Raspberry Pi by plugging it in to its power supply.  
 Please refer to the Robot Code Developing and Testing Methodology for reporting bugs and comments.
 
-How does it work?
-The Java code is deployed and will call on the Python code when needed. 
-The Raspberry Pi's startup script will run the code and communicate with the roboRIO via I2C when it is called on by the Java Program.
+How can we test this code?
+To test:
+1. SSH into the Raspberry Pi
+2. Load the script with FileZilla's SCP Function (If you are using Windows) (macOS or Linux has a SCP client built in)
+3. Use Pypi to install the opencv-python package.
+4. Run script with python3 getball.py and see if console prints True. If it does so satisfactorily, the program is functional.
+5. Take notes on robot behavior and comment on this commit.
 '''
 
 import cv2
